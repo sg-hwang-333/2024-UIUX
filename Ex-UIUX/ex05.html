@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>songs</title>
+</head>
+<body>
+    <div id="song_list"></div>
+    <input type="button" onclick="search_event()" value="검색">
+</body>
+</html>
+
+<script>
+    const songs = [
+        "슬로우 다우너 - 로쿠로",
+        "BirthDay kid - Mili",
+        "Endospore - 미즈키",
+        "Lessing - 레싱",
+        "독백 - MARETU"
+    ];
+
+    function suggestSong() {
+        return songs[Math.floor(Math.random() * songs.length)];
+    }
+
+    function search_event() {
+        const searchMsg = prompt('곡명을 입력해주세요');
+        for (let x of songs) {
+            if (x.includes(searchMsg)) return alert(`${x}`);
+        }
+        alert("곡을 찾을 수 없습니다");
+    }
+
+    // songs 배열 내용 출력
+    const songListElement = document.getElementById('song_list');
+    songListElement.innerHTML = "";
+    for (let x of songs) {
+        songListElement.innerHTML += x + "<br>"
+    }
+    songListElement.innerHTML += "<br>추천 곡 : " + suggestSong();
+</script>
