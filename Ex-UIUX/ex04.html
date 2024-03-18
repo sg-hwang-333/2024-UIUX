@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문장만들기</title>
+</head>
+<body>
+    <p id="sentence"></p>
+    <script>
+        function makeSentence() {
+            const word1 = ['자상한', '콧대 높은', '귀여운', '깜찍한', '사랑스러운'];
+            const word2 = ['키가 큰', '키가 작은', '빼빼 마른', '의문의', '덩치 큰'];
+            const word3 = ['경로당', '홍삼', '캔디', '도둑', '곰'];
+
+            //1. read1,2,3에 각각 나타낼 index 랜덤값으로 지정하기.
+            const len = word1.length;
+            const read1 = word1[Math.floor(Math.random() * len)];
+            const read2 = word2[Math.floor(Math.random() * len)];
+            const read3 = word3[Math.floor(Math.random() * len)];
+
+
+            //2. 만든 인덱스로 문장 생성하기
+            const str = `${read1} ${read2} ${read3}`;
+
+            //3. 그 문장을 id가 sentence인 곳에 나타내기
+            document.getElementById('sentence').innerHTML = str;
+
+
+        }
+
+        makeSentence();
+    </script>
+</body>
+</html>
