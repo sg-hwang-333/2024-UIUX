@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .imgCont {
+            text-align: center;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            padding: 5px;
+            position: relative;
+            cursor: pointer;
+            z-index: 999;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <div class="imgCont" onselect="return false">
+        <img src="./img/1.png" onclick="imgContCopy(this)">
+        <img src="./img/2.png" onclick="imgContCopy(this)">
+        <img src="./img/3.png" onclick="imgContCopy(this)">
+        <img src="./img/4.png" onclick="imgContCopy(this)">
+        <img src="./img/5.png" onclick="imgContCopy(this)">
+    </div>
+</body>
+</html>
+
+<script>
+    function imgContCopy(imgCont_o) {
+        let pos = $(imgCont_o).offset();
+        let rnd1 = Math.round(Math.random() * 900 - 850);
+        let rnd2 = Math.round(Math.random() * 900 - 450);
+
+        // 클릭한 이미지 기준으로 이동할 위치 게산
+        let move_top = pos.top - rnd1;
+        let move_left = pos.left - rnd2;
+       
+        $(imgCont_o)
+            .clone() // 클릭한 이미지 복제
+            .appendTo(".imgCont")  // imgCont에 복제한 것 추가
+            .css({top:pos.top, left:pos.left, position:'absolute'}) 
+            .animate({top:move_top, left:move_left}, 1000, function() {
+                let img = this;
+                setTimeout(() => {
+                    $(img).remove();
+                }, 3000)
+            })
+
+    }
+</script>
