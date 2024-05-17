@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require("cors");
+const cors = require('cors');
 const app = express();
 
 app.use(cors({
@@ -7,27 +7,21 @@ app.use(cors({
     credentials:true,
 }));
 
-app.get("/", (req,res) => {
+app.get("/",(req,res)=>{
+    const jsonData = new Array();
+    jsonData.push({"name":"Yoonji"});
+    jsonData.push({"name":"Joy"});
+    jsonData.push({"name":"Try"});
+    res.send(jsonData);
+});
 
-    const jsondata = new Array();
-    jsondata.push({"name":"rodang"});
-    jsondata.push({"name":"hongsam"});
-    jsondata.push({"name":"candy"});
-    jsondata.push({"name":"dodduk"});
+app.post("/",(req,res)=>{
+    const jsonData = new Array();
+    jsonData.push({"name":"1Yoonji"});
+    jsonData.push({"name":"1Joy"});
+    jsonData.push({"name":"1Try"});
+    res.send(jsonData);
+});
 
+app.listen(3005);
 
-    res.send(jsondata);
-})
-app.post("/", (req,res) => {
-
-    const jsondata = new Array();
-    jsondata.push({"name":"1rodang"});
-    jsondata.push({"name":"2hongsam"});
-    jsondata.push({"name":"3candy"});
-    jsondata.push({"name":"4dodduk"});
-
-
-    res.send(jsondata);
-})
-
-app.listen(3002);
